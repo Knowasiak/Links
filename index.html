@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Gaurav · Builder. Founder. Creator.</title>
+  <meta name="description" content="AI, SaaS, B2B & Networks. 3X Founder & Ex-CEO. Scaled 0→600K Monthly Unique Users in 24 months. Extreme Agency Owner." />
+  <meta property="og:title" content="Aditya Gaurav · Builder. Founder. Creator." />
+  <meta property="og:description" content="AI, SaaS, B2B & Networks. 3X Founder & Ex-CEO." />
+  <meta property="og:image" content="./4k.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Phosphor Icons CDN -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #030712; /* Rich dark slate */
+      --surface: rgba(255,255,255,0.035);
+      --surface-hover: rgba(255,255,255,0.07);
+      --border: rgba(255,255,255,0.08);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #6366f1;
+      --accent2: #818cf8;
+      --cyan: #22d3ee;
+      --pink: #f472b6;
+      --gold: #fbbf24;
+      --green: #34d399;
+      --radius: 16px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100svh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── ACETERNITY LAMP BG ─── */
+    .lamp-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 520px;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .lamp-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: -100px; /* Tucks the source points at the top of page */
+    }
+
+    /* Left and right conic spotlight cones (Cyan style matching screenshot) */
+    .lamp-conic-left {
+      position: absolute;
+      right: 50%;
+      top: 120px;
+      width: 30rem;
+      height: 15rem;
+      background-image: conic-gradient(from 70deg at right top, rgba(34, 211, 238, 0.55), transparent 60%);
+      z-index: 10;
+      overflow: visible;
+    }
+    
+    .lamp-conic-right {
+      position: absolute;
+      left: 50%;
+      top: 120px;
+      width: 30rem;
+      height: 15rem;
+      background-image: conic-gradient(from 290deg at left top, transparent 40%, rgba(34, 211, 238, 0.55));
+      z-index: 10;
+      overflow: visible;
+    }
+
+    /* Edge masks using linear gradients on background block elements */
+    .lamp-mask-left-edge {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 10rem;
+      height: 100%;
+      background: var(--bg);
+      z-index: 20;
+      mask-image: linear-gradient(to right, white, transparent);
+      -webkit-mask-image: linear-gradient(to right, white, transparent);
+    }
+    
+    .lamp-mask-right-edge {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 10rem;
+      height: 100%;
+      background: var(--bg);
+      z-index: 20;
+      mask-image: linear-gradient(to left, white, transparent);
+      -webkit-mask-image: linear-gradient(to left, white, transparent);
+    }
+
+    .lamp-mask-bottom-edge {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 10rem;
+      background: var(--bg);
+      z-index: 20;
+      mask-image: linear-gradient(to top, white, transparent);
+      -webkit-mask-image: linear-gradient(to top, white, transparent);
+    }
+
+    /* Cover block to slice top curves */
+    .lamp-cover-block {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 120px;
+      background: var(--bg);
+      z-index: 30;
+    }
+
+    /* Horizontal light beam bar (Bright centered gradient matching screenshot) */
+    .lamp-horizontal-line {
+      position: absolute;
+      top: 120px;
+      width: 30rem;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #22d3ee 20%, #ffffff 50%, #22d3ee 80%, transparent);
+      z-index: 50;
+      box-shadow: 0 0 15px 2px rgba(6, 182, 212, 0.8), 0 0 30px 6px rgba(6, 182, 212, 0.4);
+    }
+
+    /* Glow orbs centered near origin */
+    .lamp-glow-inner {
+      position: absolute;
+      top: 70px;
+      width: 16rem;
+      height: 9rem;
+      border-radius: 50%;
+      background: #06b6d4;
+      filter: blur(40px);
+      opacity: 0.85;
+      z-index: 25;
+    }
+
+    .lamp-glow-wide {
+      position: absolute;
+      top: 55px;
+      width: 28rem;
+      height: 9rem;
+      border-radius: 50%;
+      background: #22d3ee;
+      filter: blur(60px);
+      opacity: 0.5;
+      z-index: 25;
+    }
+
+    /* Bottom blend gradient sheets */
+    .lamp-darkener {
+      position: absolute;
+      top: 220px;
+      left: 0;
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      z-index: 15;
+    }
+
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 128px;
+      pointer-events: none;
+    }
+
+
+
+    /* ─── LAYOUT ─── */
+    .page {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100svh;
+      padding: 48px 20px 80px;
+      gap: 28px;
+    }
+
+    /* ─── ANIMATED BADGE (Eldora UI style) ─── */
+    .badge-link {
+      position: relative;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 14px;
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: badgeFadeIn 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(-10px);
+      z-index: 10;
+    }
+
+    .badge-link:hover {
+      background: rgba(99, 102, 241, 0.16);
+      border-color: rgba(99, 102, 241, 0.4);
+      color: #fff;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(99, 102, 241, 0.25);
+    }
+
+    /* Glow wrapper for SVG path mask */
+    .badge-glow-wrap {
+      pointer-events: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 100%;
+      height: 80px;
+      width: 165px;
+      z-index: -1;
+    }
+
+    .badge-glow-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* SVG path animations */
+    .multiline {
+      offset-anchor: 10px 0px;
+      animation: multiline-animation-path 3s linear infinite;
+    }
+
+    .ml-light-1 {
+      offset-path: path(
+        "M 69 49.8 h -30 q -3 0 -3 -3 v -13 q 0 -3 -3 -3 h -23 q -3 0 -3 -3 v -13 q 0 -3 -3 -3 h -30"
+      );
+    }
+
+    @keyframes multiline-animation-path {
+      0% {
+        offset-distance: 0%;
+      }
+      50% {
+        offset-distance: 100%;
+      }
+      100% {
+        offset-distance: 100%;
+      }
+    }
+
+    /* Double ping dot container */
+    .badge-dot-container {
+      position: relative;
+      display: flex;
+      width: 6px;
+      height: 6px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgba(52, 211, 153, 0.4);
+      margin-right: 4px;
+    }
+
+    .badge-dot-ping {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #34d399;
+      animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .delay-ping {
+      animation-delay: 0.75s;
+    }
+
+    .badge-dot-center {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: #34d399;
+    }
+
+    .badge-divider {
+      width: 1px;
+      height: 14px;
+      background-color: rgba(255, 255, 255, 0.15);
+      margin: 0 6px;
+    }
+
+    .badge-text {
+      background: linear-gradient(to right, #cbd5e1, #f1f5f9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: all 0.3s ease;
+    }
+
+    .badge-link:hover .badge-text {
+      background: linear-gradient(to right, #ffffff, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .badge-arrow {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .badge-link:hover .badge-arrow {
+      color: #fff;
+      transform: translateX(3px);
+    }
+
+    @keyframes ping {
+      75%, 100% { transform: scale(2); opacity: 0; }
+    }
+
+    @keyframes badgeFadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── PROFILE CARD ─── */
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      animation: fadeUp 0.9s ease 0.1s both;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      flex-shrink: 0;
+    }
+
+    .avatar-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #6366f1, #818cf8, #22d3ee, #f472b6, #6366f1);
+      animation: ringRotate 4s linear infinite;
+      filter: blur(1px);
+    }
+    .avatar-ring-mask {
+      position: absolute;
+      inset: 3px;
+      border-radius: 50%;
+      background: var(--bg);
+      z-index: 1;
+    }
+    .avatar {
+      position: absolute;
+      inset: 6px;
+      z-index: 2;
+      border-radius: 50%;
+      object-fit: cover;
+      width: calc(100% - 12px);
+      height: calc(100% - 12px);
+    }
+
+    @keyframes ringRotate {
+      to { transform: rotate(360deg); }
+    }
+
+    .profile-text {
+      text-align: center;
+    }
+
+    .profile-name {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(36px, 8vw, 52px);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      background: linear-gradient(to bottom, #ffffff 35%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .profile-bio {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    .profile-bio span {
+      color: rgba(240,240,255,0.75);
+    }
+
+    /* ─── LOCATION TAG ─── */
+    .location-tag-wrapper {
+      animation: fadeUp 0.9s ease 0.25s both;
+    }
+
+    .location-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: var(--transition);
+      min-width: 160px;
+      justify-content: center;
+    }
+
+    .location-tag:hover {
+      background: var(--surface-hover);
+      border-color: rgba(99,102,241,0.4);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(99,102,241,0.15);
+    }
+
+    .location-tag i {
+      color: rgba(255, 255, 255, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .location-tag:hover i {
+      color: rgba(255, 255, 255, 1);
+    }
+
+    .loc-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      animation: pulse-dot 2.5s ease-in-out infinite;
+    }
+
+    .loc-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      height: 18px;
+      display: flex;
+      align-items: center;
+    }
+
+    .loc-primary, .loc-secondary {
+      position: absolute;
+      white-space: nowrap;
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .loc-primary { transform: translateY(0); opacity: 1; }
+    .loc-secondary { transform: translateY(20px); opacity: 0; }
+
+    .location-tag:hover .loc-primary { transform: translateY(-20px); opacity: 0; }
+    .location-tag:hover .loc-secondary { transform: translateY(0); opacity: 1; }
+
+    .loc-calendar-icon {
+      width: 14px; height: 14px;
+      opacity: 0.7;
+    }
+
+    .loc-open-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      background: rgba(52,211,153,0.15);
+      border: 1px solid rgba(52,211,153,0.35);
+      border-radius: 999px;
+      color: var(--green);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    /* ─── SECTION LABELS ─── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+      animation: fadeUp 0.9s ease 0.35s both;
+    }
+
+    /* ─── SOCIAL BUTTONS ─── */
+    .buttons-section {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeUp 0.9s ease 0.4s both;
+    }
+
+    .social-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 16px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      background: linear-gradient(135deg, rgba(8, 8, 16, 0.4) 0%, rgba(9, 9, 11, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%);
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .social-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Content wrap inside the button */
+    .btn-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+    }
+
+    /* Icon wrapper */
+    .btn-icon-wrap {
+      padding: 10px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    .btn-icon-wrap i {
+      font-size: 22px;
+      color: rgba(255, 255, 255, 0.65); /* Semi-transparent white default */
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover .btn-icon-wrap i {
+      color: rgba(255, 255, 255, 1); /* Full white on hover */
+      transform: scale(1.1);
+    }
+
+    /* Labels */
+    .btn-label-wrap {
+      flex: 1;
+      text-align: left;
+    }
+
+    .btn-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .btn-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      transition: color 0.3s ease;
+    }
+
+    /* Chevron */
+    .btn-chevron {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.6);
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .btn-chevron i {
+      font-size: 18px;
+    }
+
+    .social-btn:hover .btn-chevron {
+      color: rgba(255, 255, 255, 1);
+      transform: translateX(4px);
+    }
+
+    /* Shimmer Overlay */
+    .btn-shimmer {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+      transform: translateX(-100%);
+      transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .social-btn:hover .btn-shimmer {
+      transform: translateX(100%);
+    }
+
+    /* Glow Overlay */
+    .btn-glow {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .social-btn:hover .btn-glow {
+      opacity: 1;
+    }
+
+    /* Platform-specific themes */
+    /* LinkedIn */
+    .btn-linkedin {
+      border-color: rgba(10, 102, 194, 0.3);
+      background: linear-gradient(135deg, rgba(10, 102, 194, 0.15) 0%, rgba(8, 8, 16, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%);
+    }
+    .btn-linkedin:hover {
+      border-color: rgba(10, 102, 194, 0.7);
+      box-shadow: 0 20px 40px rgba(10, 102, 194, 0.25);
+    }
+    .btn-linkedin .btn-shimmer {
+      background: linear-gradient(90deg, transparent, rgba(10, 102, 194, 0.3), transparent);
+    }
+    .btn-linkedin .btn-glow {
+      background: linear-gradient(90deg, rgba(10, 102, 194, 0.05), rgba(10, 102, 194, 0.15), rgba(10, 102, 194, 0.05));
+    }
+    .btn-linkedin .btn-icon-wrap {
+      background: linear-gradient(135deg, rgba(10, 102, 194, 0.3), rgba(10, 102, 194, 0.05));
+    }
+    .btn-linkedin:hover .btn-icon-wrap {
+      background: linear-gradient(135deg, rgba(10, 102, 194, 0.4), rgba(10, 102, 194, 0.1));
+    }
+    .btn-linkedin .btn-title {
+      color: #72b2f4;
+    }
+    .btn-linkedin:hover .btn-title {
+      color: #3b82f6;
+    }
+    .btn-linkedin .btn-subtitle {
+      color: rgba(10, 102, 194, 0.7);
+    }
+    .btn-linkedin:hover .btn-subtitle {
+      color: rgba(59, 130, 246, 0.9);
+    }
+
+
+    /* Personal Site */
+    .btn-portfolio {
+      border-color: rgba(99, 102, 241, 0.3);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(8, 8, 16, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%);
+    }
+    .btn-portfolio:hover {
+      border-color: rgba(99, 102, 241, 0.7);
+      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.25);
+    }
+    .btn-portfolio .btn-shimmer {
+      background: linear-gradient(90deg, transparent, rgba(129, 140, 248, 0.3), transparent);
+    }
+    .btn-portfolio .btn-glow {
+      background: linear-gradient(90deg, rgba(99, 102, 241, 0.05), rgba(99, 102, 241, 0.15), rgba(99, 102, 241, 0.05));
+    }
+    .btn-portfolio .btn-icon-wrap {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(99, 102, 241, 0.05));
+    }
+    .btn-portfolio:hover .btn-icon-wrap {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(99, 102, 241, 0.1));
+    }
+    .btn-portfolio .btn-title {
+      color: #818cf8;
+    }
+    .btn-portfolio:hover .btn-title {
+      color: #a5b4fc;
+    }
+    .btn-portfolio .btn-subtitle {
+      color: rgba(129, 140, 248, 0.7);
+    }
+    .btn-portfolio:hover .btn-subtitle {
+      color: rgba(165, 180, 252, 0.9);
+    }
+
+
+    /* Instagram */
+    .btn-instagram {
+      border-color: rgba(244, 63, 94, 0.3);
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.15) 0%, rgba(8, 8, 16, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%);
+    }
+    .btn-instagram:hover {
+      border-color: rgba(244, 63, 94, 0.7);
+      box-shadow: 0 20px 40px rgba(244, 63, 94, 0.25);
+    }
+    .btn-instagram .btn-shimmer {
+      background: linear-gradient(90deg, transparent, rgba(244, 63, 94, 0.3), transparent);
+    }
+    .btn-instagram .btn-glow {
+      background: linear-gradient(90deg, rgba(244, 63, 94, 0.05), rgba(244, 63, 94, 0.15), rgba(244, 63, 94, 0.05));
+    }
+    .btn-instagram .btn-icon-wrap {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.3), rgba(244, 63, 94, 0.05));
+    }
+    .btn-instagram:hover .btn-icon-wrap {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.4), rgba(244, 63, 94, 0.1));
+    }
+    .btn-instagram .btn-title {
+      color: #f472b6;
+    }
+    .btn-instagram:hover .btn-title {
+      color: #fb7185;
+    }
+    .btn-instagram .btn-subtitle {
+      color: rgba(244, 63, 94, 0.7);
+    }
+    .btn-instagram:hover .btn-subtitle {
+      color: rgba(251, 113, 133, 0.9);
+    }
+
+
+    /* YouTube */
+    .btn-youtube {
+      border-color: rgba(239, 68, 68, 0.3);
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(8, 8, 16, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%);
+    }
+    .btn-youtube:hover {
+      border-color: rgba(239, 68, 68, 0.7);
+      box-shadow: 0 20px 40px rgba(239, 68, 68, 0.25);
+    }
+    .btn-youtube .btn-shimmer {
+      background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.3), transparent);
+    }
+    .btn-youtube .btn-glow {
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.05), rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05));
+    }
+    .btn-youtube .btn-icon-wrap {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(239, 68, 68, 0.05));
+    }
+    .btn-youtube:hover .btn-icon-wrap {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.4), rgba(239, 68, 68, 0.1));
+    }
+    .btn-youtube .btn-title {
+      color: #f87171;
+    }
+    .btn-youtube:hover .btn-title {
+      color: #ef4444;
+    }
+    .btn-youtube .btn-subtitle {
+      color: rgba(239, 68, 68, 0.7);
+    }
+    .btn-youtube:hover .btn-subtitle {
+      color: rgba(248, 113, 113, 0.9);
+    }
+
+
+    /* Knowasiak */
+    .btn-company {
+      border-color: rgba(251, 191, 36, 0.3);
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(8, 8, 16, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%);
+    }
+    .btn-company:hover {
+      border-color: rgba(251, 191, 36, 0.7);
+      box-shadow: 0 20px 40px rgba(251, 191, 36, 0.25);
+    }
+    .btn-company .btn-shimmer {
+      background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.3), transparent);
+    }
+    .btn-company .btn-glow {
+      background: linear-gradient(90deg, rgba(251, 191, 36, 0.05), rgba(251, 191, 36, 0.15), rgba(251, 191, 36, 0.05));
+    }
+    .btn-company .btn-icon-wrap {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.3), rgba(251, 191, 36, 0.05));
+    }
+    .btn-company:hover .btn-icon-wrap {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.4), rgba(251, 191, 36, 0.1));
+    }
+    .btn-company .btn-title {
+      color: #fbbf24;
+    }
+    .btn-company:hover .btn-title {
+      color: #fcd34d;
+    }
+    .btn-company .btn-subtitle {
+      color: rgba(251, 191, 36, 0.7);
+    }
+    .btn-company:hover .btn-subtitle {
+      color: rgba(252, 211, 77, 0.9);
+    }
+
+
+    /* GitHub */
+    .btn-github {
+      border-color: rgba(240, 240, 255, 0.12);
+      background: linear-gradient(135deg, rgba(240, 240, 255, 0.05) 0%, rgba(8, 8, 16, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%);
+    }
+    .btn-github:hover {
+      border-color: rgba(240, 240, 255, 0.35);
+      box-shadow: 0 20px 40px rgba(255, 255, 255, 0.08);
+    }
+    .btn-github .btn-shimmer {
+      background: linear-gradient(90deg, transparent, rgba(240, 240, 255, 0.15), transparent);
+    }
+    .btn-github .btn-glow {
+      background: linear-gradient(90deg, rgba(240, 240, 255, 0.02), rgba(240, 240, 255, 0.08), rgba(240, 240, 255, 0.02));
+    }
+    .btn-github .btn-icon-wrap {
+      background: linear-gradient(135deg, rgba(240, 240, 255, 0.15), rgba(240, 240, 255, 0.02));
+    }
+    .btn-github:hover .btn-icon-wrap {
+      background: linear-gradient(135deg, rgba(240, 240, 255, 0.25), rgba(240, 240, 255, 0.05));
+    }
+    .btn-github .btn-title {
+      color: #f0f0ff;
+    }
+    .btn-github:hover .btn-title {
+      color: #ffffff;
+    }
+    .btn-github .btn-subtitle {
+      color: rgba(240, 240, 255, 0.55);
+    }
+    .btn-github:hover .btn-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+
+    /* ─── STATS ROW ─── */
+    .stats-row {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      max-width: 440px;
+      animation: fadeUp 0.9s ease 0.5s both;
+    }
+
+    .stat-card {
+      flex: 1;
+      padding: 16px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-align: center;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: var(--transition);
+    }
+    .stat-card:hover {
+      background: var(--surface-hover);
+      border-color: rgba(99,102,241,0.3);
+      transform: translateY(-2px);
+    }
+
+    .stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #f0f0ff, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      opacity: 0.6;
+      animation: fadeUp 0.9s ease 0.6s both;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.3); border-radius: 3px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 480px) {
+      .page { padding: 36px 16px 60px; gap: 22px; }
+      .stats-row { flex-wrap: wrap; }
+      .stat-card { min-width: calc(50% - 6px); }
+    }
+
+    /* ─── FLOATING PARTICLES ─── */
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: rgba(99,102,241,0.6);
+      animation: floatParticle linear infinite;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Lamp Background -->
+  <div class="lamp-container" aria-hidden="true">
+    <div class="lamp-wrapper">
+      <div class="lamp-conic-left">
+        <div class="lamp-mask-left-edge"></div>
+        <div class="lamp-mask-bottom-edge"></div>
+      </div>
+      <div class="lamp-conic-right">
+        <div class="lamp-mask-right-edge"></div>
+        <div class="lamp-mask-bottom-edge"></div>
+      </div>
+      <div class="lamp-glow-inner"></div>
+      <div class="lamp-glow-wide"></div>
+      <div class="lamp-cover-block"></div>
+      <div class="lamp-horizontal-line"></div>
+      <div class="lamp-darkener"></div>
+    </div>
+  </div>
+
+  <!-- Noise texture -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Floating particles -->
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <!-- Main page -->
+  <main class="page" role="main">
+
+    <!-- Animated Badge → Portfolio -->
+    <a href="https://adityagaurav.com/about" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="badge-link group"
+       id="portfolio-badge"
+       aria-label="Visit Aditya Gaurav's portfolio">
+      <!-- Animated Line Border Overlay (Eldora UI) -->
+      <div class="badge-glow-wrap" aria-hidden="true">
+        <svg class="badge-glow-svg" width="165" height="50" viewBox="0 0 165 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g mask="url(#ml-mask-1)">
+            <circle class="multiline ml-light-1" cx="0" cy="0" r="20" fill="url(#ml-white-grad)"></circle>
+          </g>
+          <defs>
+            <mask id="ml-mask-1">
+              <path d="M 69 49.8 h -30 q -3 0 -3 -3 v -13 q 0 -3 -3 -3 h -23 q -3 0 -3 -3 v -13 q 0 -3 -3 -3 h -30" stroke-width="0.8" stroke="white" fill="none"></path>
+            </mask>
+            <radialGradient id="ml-white-grad" fx="1">
+              <stop offset="0%" stop-color="#818cf8"></stop>
+              <stop offset="20%" stop-color="#818cf8"></stop>
+              <stop offset="100%" stop-color="transparent"></stop>
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+      <!-- Pulse dot with dual ping -->
+      <div class="badge-dot-container" aria-hidden="true">
+        <div class="badge-dot-ping"></div>
+        <div class="badge-dot-ping delay-ping"></div>
+        <div class="badge-dot-center"></div>
+      </div>
+      <div class="badge-divider" aria-hidden="true"></div>
+      <span class="badge-text">View Portfolio &amp; About</span>
+      <i class="ph ph-arrow-right badge-arrow" aria-hidden="true"></i>
+    </a>
+
+    <!-- Profile -->
+    <section class="profile-card" aria-labelledby="profile-name">
+      <div class="avatar-wrap" aria-hidden="true">
+        <div class="avatar-ring"></div>
+        <div class="avatar-ring-mask"></div>
+        <img class="avatar" src="./4k.jpeg" alt="Aditya Gaurav" width="110" height="110" fetchpriority="high" decoding="async" />
+      </div>
+      <div class="profile-text">
+        <h1 class="profile-name" id="profile-name">Aditya Gaurav</h1>
+        <p class="profile-bio">
+          <span>AI · SaaS · B2B · Networks · Intelligence</span><br />
+          Ex-Mentor at Startup World Cup, IIT · 3X Founder &amp; Ex-CEO<br />
+          Scaled 0→600K Monthly Unique Users in 24 months, $0 CAC
+        </p>
+      </div>
+    </section>
+
+    <!-- Location Tag → Calendar -->
+    <div class="location-tag-wrapper">
+      <a href="https://topmate.io/adityagaurav/1827525"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="location-tag"
+         id="location-tag"
+         aria-label="San Francisco · Book a call via calendar">
+        <span class="loc-dot" aria-hidden="true"></span>
+        <div class="loc-text" style="position:relative; width:200px;">
+          <span class="loc-primary">
+            <i class="ph ph-map-pin" style="font-size: 13px; line-height: 1; vertical-align: middle; margin-right: 2px;"></i>
+            San Francisco, CA &nbsp;<span class="loc-open-badge">Open to Work Sep '26</span>
+          </span>
+          <span class="loc-secondary" id="loc-time">
+            <i class="ph ph-calendar loc-calendar-icon" style="font-size: 14px; line-height: 1; vertical-align: middle; margin-right: 2px;"></i>
+            <span id="sfo-time">–</span> · Book a call
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row" role="list" aria-label="Key achievements">
+      <div class="stat-card" role="listitem">
+        <div class="stat-num">600K+</div>
+        <div class="stat-label">Monthly Users</div>
+      </div>
+      <div class="stat-card" role="listitem">
+        <div class="stat-num">3×</div>
+        <div class="stat-label">Founder &amp; Ex-CEO</div>
+      </div>
+      <div class="stat-card" role="listitem">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">CAC Achieved</div>
+      </div>
+      <div class="stat-card" role="listitem">
+        <div class="stat-num">M.S.</div>
+        <div class="stat-label">Graduate Degree</div>
+      </div>
+    </div>
+
+    <!-- Section label -->
+    <p class="section-label" aria-hidden="true">Connect with me</p>
+
+    <!-- Social Buttons -->
+    <nav class="buttons-section" aria-label="Social media and contact links">
+ 
+       <a href="https://www.linkedin.com/in/adityagauravkc/" 
+          target="_blank" rel="noopener noreferrer"
+          class="social-btn btn-linkedin"
+          id="btn-linkedin">
+        <div class="btn-shimmer" aria-hidden="true"></div>
+        <div class="btn-glow" aria-hidden="true"></div>
+        <div class="btn-content">
+          <div class="btn-icon-wrap" aria-hidden="true">
+            <i class="ph ph-linkedin-logo"></i>
+          </div>
+          <div class="btn-label-wrap">
+            <div class="btn-title">LinkedIn</div>
+            <div class="btn-subtitle">Professional profile &amp; network</div>
+          </div>
+          <div class="btn-chevron" aria-hidden="true">
+            <i class="ph ph-caret-right"></i>
+          </div>
+        </div>
+      </a>
+ 
+       <a href="https://adityagaurav.com"
+          target="_blank" rel="noopener noreferrer"
+          class="social-btn btn-portfolio"
+          id="btn-website">
+        <div class="btn-shimmer" aria-hidden="true"></div>
+        <div class="btn-glow" aria-hidden="true"></div>
+        <div class="btn-content">
+          <div class="btn-icon-wrap" aria-hidden="true">
+            <i class="ph ph-globe"></i>
+          </div>
+          <div class="btn-label-wrap">
+            <div class="btn-title">Personal Site</div>
+            <div class="btn-subtitle">adityagaurav.com</div>
+          </div>
+          <div class="btn-chevron" aria-hidden="true">
+            <i class="ph ph-caret-right"></i>
+          </div>
+        </div>
+      </a>
+ 
+       <a href="https://www.instagram.com/adityagauravkc"
+          target="_blank" rel="noopener noreferrer"
+          class="social-btn btn-instagram"
+          id="btn-instagram">
+        <div class="btn-shimmer" aria-hidden="true"></div>
+        <div class="btn-glow" aria-hidden="true"></div>
+        <div class="btn-content">
+          <div class="btn-icon-wrap" aria-hidden="true">
+            <i class="ph ph-instagram-logo"></i>
+          </div>
+          <div class="btn-label-wrap">
+            <div class="btn-title">Instagram</div>
+            <div class="btn-subtitle">@adityagauravkc</div>
+          </div>
+          <div class="btn-chevron" aria-hidden="true">
+            <i class="ph ph-caret-right"></i>
+          </div>
+        </div>
+      </a>
+ 
+       <a href="https://youtube.com/adityagauravkc"
+          target="_blank" rel="noopener noreferrer"
+          class="social-btn btn-youtube"
+          id="btn-youtube">
+        <div class="btn-shimmer" aria-hidden="true"></div>
+        <div class="btn-glow" aria-hidden="true"></div>
+        <div class="btn-content">
+          <div class="btn-icon-wrap" aria-hidden="true">
+            <i class="ph ph-youtube-logo"></i>
+          </div>
+          <div class="btn-label-wrap">
+            <div class="btn-title">YouTube</div>
+            <div class="btn-subtitle">@adityagauravkc</div>
+          </div>
+          <div class="btn-chevron" aria-hidden="true">
+            <i class="ph ph-caret-right"></i>
+          </div>
+        </div>
+      </a>
+ 
+       <a href="https://www.knowasiak.com/"
+          target="_blank" rel="noopener noreferrer"
+          class="social-btn btn-company"
+          id="btn-company">
+        <div class="btn-shimmer" aria-hidden="true"></div>
+        <div class="btn-glow" aria-hidden="true"></div>
+        <div class="btn-content">
+          <div class="btn-icon-wrap" aria-hidden="true">
+            <i class="ph ph-briefcase"></i>
+          </div>
+          <div class="btn-label-wrap">
+            <div class="btn-title">Knowasiak</div>
+            <div class="btn-subtitle">My company · knowasiak.com</div>
+          </div>
+          <div class="btn-chevron" aria-hidden="true">
+            <i class="ph ph-caret-right"></i>
+          </div>
+        </div>
+      </a>
+ 
+       <a href="https://github.com/Knowasiak"
+          target="_blank" rel="noopener noreferrer"
+          class="social-btn btn-github"
+          id="btn-github">
+        <div class="btn-shimmer" aria-hidden="true"></div>
+        <div class="btn-glow" aria-hidden="true"></div>
+        <div class="btn-content">
+          <div class="btn-icon-wrap" aria-hidden="true">
+            <i class="ph ph-github-logo"></i>
+          </div>
+          <div class="btn-label-wrap">
+            <div class="btn-title">GitHub</div>
+            <div class="btn-subtitle">Knowasiak on GitHub</div>
+          </div>
+          <div class="btn-chevron" aria-hidden="true">
+            <i class="ph ph-caret-right"></i>
+          </div>
+        </div>
+      </a>
+ 
+     </nav>
+
+    <!-- Footer -->
+    <p class="footer">
+      Made with ♡ in San Francisco · © 2026 Aditya Gaurav
+    </p>
+
+  </main>
+
+  <script>
+    // ─── SFO Live Time ───
+    function updateSFOTime() {
+      const el = document.getElementById('sfo-time');
+      if (!el) return;
+      try {
+        const now = new Date();
+        const sfoTime = now.toLocaleTimeString('en-US', {
+          timeZone: 'America/Los_Angeles',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true
+        });
+        el.textContent = sfoTime + ' SFO';
+      } catch(e) {
+        el.textContent = 'San Francisco';
+      }
+    }
+    updateSFOTime();
+    setInterval(updateSFOTime, 10000);
+
+    // ─── Floating Particles ───
+    const particlesContainer = document.getElementById('particles');
+    const PARTICLE_COUNT = 18;
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const x = Math.random() * 100;
+      const duration = 12 + Math.random() * 20;
+      const delay = Math.random() * -20;
+      const size = 1 + Math.random() * 3;
+      p.style.cssText = `
+        left: ${x}%;
+        width: ${size}px;
+        height: ${size}px;
+        animation-duration: ${duration}s;
+        animation-delay: ${delay}s;
+        background: hsl(${220 + Math.random() * 60}deg, 80%, 65%);
+        opacity: ${0.3 + Math.random() * 0.5};
+      `;
+      particlesContainer.appendChild(p);
+    }
+
+    // ─── Button ripple on click ───
+    document.querySelectorAll('.social-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const rect = this.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.12);
+          width: 200px;
+          height: 200px;
+          left: ${e.clientX - rect.left - 100}px;
+          top: ${e.clientY - rect.top - 100}px;
+          transform: scale(0);
+          animation: rippleAnim 0.6s ease-out forwards;
+          pointer-events: none;
+          z-index: 10;
+        `;
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 700);
+      });
+    });
+
+    // Inject ripple animation
+    const style = document.createElement('style');
+    style.textContent = `@keyframes rippleAnim { to { transform: scale(2); opacity: 0; } }`;
+    document.head.appendChild(style);
+  </script>
+
+</body>
+</html>
