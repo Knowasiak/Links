@@ -1234,11 +1234,33 @@
 
   <script>
     // ─── SFO Live Time ───
+    let timeOffset = 0;
+
+    async function syncWithServer() {
+      try {
+        const start = performance.now();
+        // Make a lightweight HEAD fetch to get the current server time from headers
+        const response = await fetch(window.location.href, { method: 'HEAD' });
+        const dateStr = response.headers.get('Date');
+        if (dateStr) {
+          const serverTime = new Date(dateStr).getTime();
+          const end = performance.now();
+          const latency = (end - start) / 2;
+          const clientTime = Date.now();
+          timeOffset = (serverTime + latency) - clientTime;
+          updateSFOTime(); // Refresh immediately with synced time
+        }
+      } catch(e) {
+        // Silently fallback to local client clock in case of CORS or offline issues
+      }
+    }
+    syncWithServer();
+
     function updateSFOTime() {
       const el = document.getElementById('sfo-time');
       if (!el) return;
       try {
-        const now = new Date();
+        const now = new Date(Date.now() + timeOffset);
         const sfoTime = now.toLocaleTimeString('en-US', {
           timeZone: 'America/Los_Angeles',
           hour: '2-digit',
