@@ -470,15 +470,6 @@
       color: rgba(255, 255, 255, 1);
     }
 
-    .loc-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      flex-shrink: 0;
-      animation: pulse-dot 2.5s ease-in-out infinite;
-    }
-
     .loc-text {
       font-size: 13px;
       font-weight: 500;
@@ -505,11 +496,6 @@
 
     .location-tag:hover .loc-primary { transform: translateY(-20px); opacity: 0; }
     .location-tag:hover .loc-secondary { transform: translateY(0); opacity: 1; }
-
-    .loc-calendar-icon {
-      width: 14px; height: 14px;
-      opacity: 0.7;
-    }
 
     .loc-open-badge {
       font-size: 10px;
@@ -1073,14 +1059,13 @@
          class="location-tag"
          id="location-tag"
          aria-label="San Francisco · Book a call via calendar">
-        <span class="loc-dot" aria-hidden="true"></span>
-        <div class="loc-text" style="position:relative; width:200px;">
+        <div class="loc-text" style="position:relative; width:285px;">
           <span class="loc-primary">
-            <i class="ph ph-map-pin" style="font-size: 13px; line-height: 1; vertical-align: middle; margin-right: 2px;"></i>
-            San Francisco, CA &nbsp;<span class="loc-open-badge">Open to Work Sep '26</span>
+            <i class="ph ph-map-pin" style="font-size: 14px; line-height: 1; vertical-align: middle;"></i>
+            San Francisco, CA <span class="loc-open-badge">Open to Work Sep '26</span>
           </span>
           <span class="loc-secondary" id="loc-time">
-            <i class="ph ph-calendar loc-calendar-icon" style="font-size: 14px; line-height: 1; vertical-align: middle; margin-right: 2px;"></i>
+            <i class="ph ph-calendar" style="font-size: 14px; line-height: 1; vertical-align: middle;"></i>
             <span id="sfo-time">–</span> · Book a call
           </span>
         </div>
