@@ -70,3 +70,11 @@ Connecting this repository to Cloudflare Pages ensures your profile is globally 
    - **Build Command**: *Leave blank*
    - **Build Output Directory**: *Leave blank (serves root)*
 5. Click **Save and Deploy**.
+
+---
+
+## 📜 License & Usage
+
+This project is licensed under the [MIT License](LICENSE). 
+
+You are free to use, modify, and deploy this link-in-bio template for your own personal or commercial use. However, **attribution is required**. If you use this design or codebase, please provide credit by linking back to this repository or mentioning the original author (Aditya Gaurav).
